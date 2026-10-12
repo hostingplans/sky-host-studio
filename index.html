@@ -309,7 +309,7 @@ footer a{color:#c4a2ff;text-decoration:none}
 
   <div class="category-list">
     <button class="category selected" data-category="basic" aria-expanded="true">
-      <div class="category-icon">⛏️</div>
+      <div class="category-icon">🍁</div>
       <h3>MINECRAFT BASIC PLANS</h3>
       <p>Intel CPU plans for your Minecraft server, from small worlds to bigger adventures.</p>
       <span class="open-label">View 4 Plans ↓</span>
@@ -323,7 +323,7 @@ footer a{color:#c4a2ff;text-decoration:none}
     </button>
 
     <button class="category" data-category="bot" aria-expanded="false">
-      <div class="category-icon">🤖</div>
+      <div class="category-icon">❄️</div>
       <h3>BOT HOSTING</h3>
       <p>Hosting options for Discord bots and other supported applications.</p>
       <span class="open-label">View 5 Plans ↓</span>
@@ -334,7 +334,7 @@ footer a{color:#c4a2ff;text-decoration:none}
 
     <div class="plan-group active" id="group-basic">
       <div class="group-heading">
-        <h3>💎 Minecraft Basic Plans</h3>
+        <h3>🍁 Minecraft Basic Plans</h3>
         <p>Intel CPU · Select a plan and order through our Discord community.</p>
       </div>
       <div class="plans">
@@ -400,7 +400,7 @@ footer a{color:#c4a2ff;text-decoration:none}
 
     <div class="plan-group" id="group-bot">
       <div class="group-heading">
-        <h3>👾 Bot Hosting</h3>
+        <h3>❄️ Bot Hosting</h3>
         <p>Choose a resource package for your bot or supported application.</p>
       </div>d  
       <div class="plans">
@@ -548,107 +548,62 @@ groups.forEach(group=>group.classList.remove("active"));
   });
 });
 
-    const modal = document.getElementById("signInModal");
-const authForm = document.getElementById("authForm");
+    <div class="modal-backdrop" id="signInModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="close-modal" id="closeModal" type="button">&times;</button>
 
-let authMode = "login";
+    <div class="kicker">SKY HOST & STUDIO</div>
+    <h2 id="authTitle"><span class="gradient-text">Welcome Back!</span></h2>
+    <p id="authDescription">Login to your hosting account.</p>
 
-const authTitle = document.getElementById("authTitle");
-const authDescription = document.getElementById("authDescription");
-const authSubmit = document.getElementById("authSubmit");
-const switchAuth = document.getElementById("switchAuth");
-const usernameField = document.getElementById("usernameField");
-const registerEmailField = document.getElementById("registerEmailField");
-const confirmPasswordField = document.getElementById("confirmPasswordField");
-const authEmail = document.getElementById("authEmail");
-const authPassword = document.getElementById("authPassword");
-const registerEmail = document.getElementById("registerEmail");
-const confirmPassword = document.getElementById("confirmPassword");
-const authMessage = document.getElementById("authMessage");
+    <form id="authForm">
+      <div id="usernameField" hidden>
+        <label for="authUsername">Username</label>
+        <input id="authUsername" name="username" type="text"
+          placeholder="Choose a username" autocomplete="username">
+      </div>
 
-document.getElementById("signInButton").addEventListener("click", () => {
-  closeMenu();
-  modal.classList.add("open");
-});
+      <label for="authEmail">Username or Gmail</label>
+      <input id="authEmail" name="email" type="text"
+        placeholder="Enter username or Gmail" autocomplete="username" required>
 
-document.getElementById("closeModal").addEventListener("click", () => {
-  modal.classList.remove("open");
-});
+      <div id="registerEmailField" hidden>
+        <label for="registerEmail">Gmail address</label>
+        <input id="registerEmail" name="registerEmail" type="email"
+          placeholder="Enter your Gmail address" autocomplete="email">
+      </div>
 
-modal.addEventListener("click", event => {
-  if (event.target === modal) modal.classList.remove("open");
-});
+      <label for="authPassword">Password</label>
+      <input id="authPassword" name="password" type="password"
+        placeholder="Enter your password" autocomplete="current-password" required>
 
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") {
-    closeMenu();
-    modal.classList.remove("open");
-  }
-});
+      <div id="confirmPasswordField" hidden>
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" name="confirmPassword" type="password"
+          placeholder="Enter password again" autocomplete="new-password">
+      </div>
 
-function showAuthMode(mode) {
-  authMode = mode;
-  const isRegister = mode === "register";
+      <button class="btn btn-primary" id="authSubmit" type="submit">
+        Login
+      </button>
 
-  authTitle.innerHTML = isRegister
-    ? '<span class="gradient-text">Create Account</span>'
-    : '<span class="gradient-text">Welcome Back!</span>';
+      <p id="authMessage" role="status"></p>
+    </form>
 
-  authDescription.textContent = isRegister
-    ? "Register your hosting account."
-    : "Login to your hosting account.";
+    <p id="switchAuth">
+      Don't have an account?
+      <button type="button" id="showRegister"
+        style="background:none;border:0;color:#00e5ff;font-weight:bold">
+        Register
+      </button>
+    </p>
 
-  authSubmit.textContent = isRegister ? "Register" : "Login";
-  usernameField.hidden = !isRegister;
-  registerEmailField.hidden = !isRegister;
-  confirmPasswordField.hidden = !isRegister;
-
-  document.getElementById("authUsername").required = isRegister;
-  registerEmail.required = isRegister;
-  confirmPassword.required = isRegister;
-
-  authEmail.placeholder = isRegister
-    ? "Choose a username"
-    : "Enter username or Gmail";
-
-  authEmail.value = "";
-  authPassword.value = "";
-  registerEmail.value = "";
-  confirmPassword.value = "";
-  authMessage.textContent = "";
-
-  authPassword.autocomplete = isRegister ? "new-password" : "current-password";
-
-  switchAuth.innerHTML = isRegister
-    ? 'Already have an account? <button type="button" id="showLogin" style="background:none;border:0;color:#00e5ff;font-weight:bold">Login</button>'
-    : 'Don\'t have an account? <button type="button" id="showRegister" style="background:none;border:0;color:#00e5ff;font-weight:bold">Register</button>';
-
-  document.getElementById(isRegister ? "showLogin" : "showRegister")
-    .addEventListener("click", () => {
-      showAuthMode(isRegister ? "login" : "register");
-    });
-}
-
-authForm.addEventListener("submit", event => {
-  event.preventDefault();
-
-  if (authMode === "register") {
-    if (authPassword.value !== confirmPassword.value) {
-      authMessage.textContent = "Passwords do not match.";
-      return;
-    }
-
-    authMessage.textContent =
-      "Registration is not connected yet. No account has been created.";
-  } else {
-    authMessage.textContent =
-      "Login is not connected yet. No account has been accessed.";
-  }
-});
-
-showAuthMode("login");
-    
-          
+    <p class="notice">
+      Account creation and login require a connected authentication service.
+    </p>
+  </div>
+</div>
+              
 </script>
 
 </body>
