@@ -2,425 +2,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b0814">
-  <meta name="description" content="SKY HOST - Minecraft and Discord bot hosting.">
-  <title>SKY HOST | Game Server Hosting</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #f8f7ff;
-      background: #0b0814;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 7%;
-      border-bottom: 1px solid #292139;
-    }
-    .logo { font-size: 25px; font-weight: 900; color: #b79aff; }
-    nav a {
-      color: #d6cfe7;
-      text-decoration: none;
-      margin-left: 18px;
-      font-size: 14px;
-    }
-    .hero {
-      text-align: center;
-      padding: 90px 20px 70px;
-      background: radial-gradient(ellipse at top, #38205d, #0b0814 70%);
-    }
-    .tag {
-      color: #c6aaff;
-      letter-spacing: 3px;
-      font-size: 12px;
-    }
-    h1 { font-size: clamp(38px, 7vw, 68px); margin: 20px 0; }
-    h1 span { color: #b79aff; }
-    .hero p { color: #bcb4cc; line-height: 1.8; }
-    .button {
-      display: inline-block;
-      margin: 20px 6px 0;
-      padding: 14px 22px;
-      border-radius: 8px;
-      background: #a47aff;
-      color: #10091d;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .button.secondary {
-      color: white;
-      background: transparent;
-      border: 1px solid #675181;
-    }
-    section { padding: 60px 7%; }
-    .section-title { text-align: center; margin-bottom: 12px; font-size: 32px; }
-    .subtitle { text-align: center; color: #aaa0ba; margin-bottom: 35px; }
-    .plans {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-    .card {
-      padding: 26px;
-      border: 1px solid #382b4b;
-      background: #151020;
-      border-radius: 14px;
-    }
-    .card.featured { border-color: #a47aff; }
-    .card h3 { font-size: 22px; }
-    .price { font-size: 27px; font-weight: bold; color: #c4a6ff; }
-    .price small { font-size: 13px; color: #aaa0ba; }
-    .card p, .card li { color: #bcb4cc; line-height: 1.9; }
-    .card ul { padding-left: 20px; }
-    .card .button { width: 100%; text-align: center; }
-    .note {
-      max-width: 850px;
-      margin: 30px auto 0;
-      color: #958ba6;
-      font-size: 13px;
-      line-height: 1.7;
-      text-align: center;
-    }
-    footer {
-      text-align: center;
-      padding: 30px 15px;
-      border-top: 1px solid #292139;
-      color: #9388a4;
-      font-size: 13px;
-    }
-    @media (max-width: 500px) {
-      header { padding: 18px 5%; }
-      nav a { margin-left: 9px; font-size: 12px; }
-      .logo { font-size: 21px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKY HOST & STUDIO</title>
+<meta name="description" content="Affordable Minecraft and bot hosting plans.">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090914;color:#f5f3ff;font-family:Arial,sans-serif}
+header{text-align:center;padding:55px 15px;background:radial-gradient(ellipse at top,#422078,#090914 75%)}
+.logo{color:#c4b5fd;letter-spacing:4px;font-weight:bold}
+h1{font-size:clamp(30px,6vw,52px);margin:18px 0}
+h1 span{color:#a78bfa}
+header p{color:#c5c2d8;line-height:1.7}
+main{max-width:1150px;margin:auto;padding:20px 16px 60px}
+.section{text-align:center;margin:42px 0 22px}
+.section h2{font-size:27px;margin-bottom:8px}
+.section p{color:#aaa7c4}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:18px}
+.card{background:linear-gradient(145deg,#1c1a35,#11111e);border:1px solid #393153;border-radius:16px;padding:23px;display:flex;flex-direction:column;transition:.2s}
+.card:hover{border-color:#a78bfa;transform:translateY(-4px)}
+.card h3{font-size:20px;margin:0 0 12px}
+.price{font-size:32px;font-weight:bold;color:#c4b5fd}
+.price small{font-size:14px;color:#aaa7c4;font-weight:normal}
+.badge{font-size:11px;letter-spacing:1px;color:#d8caff;margin:12px 0}
+ul{list-style:none;padding:0;margin:12px 0 22px}
+li{padding:10px 0;border-bottom:1px solid #302d44;color:#d6d3e6;font-size:14px}
+li span{float:right;color:white;font-weight:bold}
+.order{display:block;text-align:center;margin-top:auto;text-decoration:none;background:#8b5cf6;color:white;padding:13px;border-radius:9px;font-weight:bold}
+.order:hover{background:#7042d8}
+footer{text-align:center;padding:25px;color:#9692ad;border-top:1px solid #28243b;font-size:13px}
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">SKY HOST</div>
-    <nav>
-      <a href="#plans">Plans</a>
-      <a href="#about">About</a>
-    </nav>
-  </header>
 
-  <main>
-    <div class="hero">
-      <div class="tag">YOUR WORLD. YOUR SERVER.</div>
-      <h1>Power Your <span>Next World.</span></h1>
-      <p>Reliable game server hosting for your next adventure.<br>
-      Start building your community with SKY HOST.</p>
-      <a class="button" href="#plans">Explore Plans</a>
-      <a class="button secondary" href="#discord">Join Our Community</a>
-    </div>
+<header>
+<div class="logo">SKY HOST & STUDIO</div>
+<h1>Power Your Server with <span>SKY HOST</span></h1>
+<p>Affordable Minecraft Server & Bot Hosting<br>Reliable performance. Simple plans. Friendly support.</p>
+</header>
 
-    <!-- HOSTING SERVICES -->
-<section id="plans">
-  <div class="container">
+<main>
 
-    <div class="section-head reveal">
-      <div class="section-label">FIND YOUR PLAN</div>
-      <h2>Our Hosting Services</h2>
-      <p>Select a service below to explore its plans and monthly prices.</p>
-    </div>
+<div class="section">
+<h2>🍁 Minecraft Basic Plans</h2>
+<p>Intel CPU · Affordable hosting for your server</p>
+</div>
+<div class="plans">
 
-    <div class="grid">
+<div class="card">
+<h3>WOOD PLAN</h3><div class="price">₹30 <small>/ month</small></div>
+<div class="badge">MINECRAFT BASIC</div>
+<ul><li>RAM <span>2 GB</span></li><li>CPU <span>150%</span></li><li>SSD Storage <span>20 GB</span></li><li>Processor <span>Intel</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-      <article class="card service-card reveal" id="service-basic">
-        <div class="symbol">01</div>
-        <div class="service-tag">INTEL PROCESSOR</div>
-        <h3>Minecraft Basic Plan</h3>
-        <p>Affordable Minecraft hosting for getting your world and community started.</p>
-        <button class="btn primary" type="button"
-          onclick="showPlans('basic')"
-          aria-controls="basic-list" aria-expanded="false">
-          View 4 Plans ↗
-        </button>
-      </article>
+<div class="card">
+<h3>STONE PLAN</h3><div class="price">₹60 <small>/ month</small></div>
+<div class="badge">MINECRAFT BASIC</div>
+<ul><li>RAM <span>4 GB</span></li><li>CPU <span>200%</span></li><li>SSD Storage <span>25 GB</span></li><li>Processor <span>Intel</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-      <article class="card service-card reveal" id="service-performance">
-        <div class="symbol">02</div>
-        <div class="service-tag">AMD PROCESSOR</div>
-        <h3>Minecraft Performance Plan</h3>
-        <p>More CPU resources for demanding gameplay and growing Minecraft communities.</p>
-        <button class="btn primary" type="button"
-          onclick="showPlans('performance')"
-          aria-controls="performance-list" aria-expanded="false">
-          View 4 Plans ↗
-        </button>
-      </article>
+<div class="card">
+<h3>COPPER PLAN</h3><div class="price">₹90 <small>/ month</small></div>
+<div class="badge">MINECRAFT BASIC</div>
+<ul><li>RAM <span>8 GB</span></li><li>CPU <span>250%</span></li><li>SSD Storage <span>30 GB</span></li><li>Processor <span>Intel</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-      <article class="card service-card reveal" id="service-bot">
-        <div class="symbol">03</div>
-        <div class="service-tag">BOT HOSTING</div>
-        <h3>Bot Hosting</h3>
-        <p>Resource options for Discord bots, automation, and supported bot applications.</p>
-        <button class="btn primary" type="button"
-          onclick="showPlans('bot')"
-          aria-controls="bot-list" aria-expanded="false">
-          View 5 Plans ↗
-        </button>
-      </article>
+<div class="card">
+<h3>IRON PLAN</h3><div class="price">₹120 <small>/ month</small></div>
+<div class="badge">MINECRAFT BASIC</div>
+<ul><li>RAM <span>16 GB</span></li><li>CPU <span>350%</span></li><li>SSD Storage <span>35 GB</span></li><li>Processor <span>Intel</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-    </div>
+</div>
 
-    <!-- MINECRAFT BASIC: INTEL -->
-    <div class="plan-list" id="basic-list">
-      <div class="plan-heading">
-        <div>
-          <h3>🍁 Minecraft Basic — Intel</h3>
-          <p>Four plans to choose from.</p>
-        </div>
-        <button class="close-plans" type="button" onclick="hidePlans()">✕ Close</button>
-      </div>
+<div class="section">
+<h2>⚡ Minecraft Performance Plans</h2>
+<p>AMD CPU · More power for demanding servers</p>
+</div>
+<div class="plans">
 
-      <div class="plan-grid">
+<div class="card">
+<h3>GOLD PLAN</h3><div class="price">₹50 <small>/ month</small></div>
+<div class="badge">MINECRAFT PERFORMANCE</div>
+<ul><li>RAM <span>2 GB</span></li><li>CPU <span>200%</span></li><li>SSD Storage <span>10 GB</span></li><li>Processor <span>AMD</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 01</div>
-          <h4>1. WOOD PLAN</h4>
-          <p class="plan-desc">An entry-level option.</p>
-          <div class="price">₹30 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>2 GB</strong></li>
-            <li>CPU <strong>150%</strong></li>
-            <li>Storage <strong>20 GB SSD</strong></li>
-            <li>Processor <strong>Intel</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
+<div class="card">
+<h3>DIAMOND PLAN</h3><div class="price">₹100 <small>/ month</small></div>
+<div class="badge">MINECRAFT PERFORMANCE</div>
+<ul><li>RAM <span>4 GB</span></li><li>CPU <span>300%</span></li><li>SSD Storage <span>20 GB</span></li><li>Processor <span>AMD</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 02</div>
-          <h4>2. STONE PLAN</h4>
-          <p class="plan-desc">More room for your world.</p>
-          <div class="price">₹60 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>4 GB</strong></li>
-            <li>CPU <strong>200%</strong></li>
-            <li>Storage <strong>25 GB SSD</strong></li>
-            <li>Processor <strong>Intel</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
+<div class="card">
+<h3>NETHERITE PLAN</h3><div class="price">₹200 <small>/ month</small></div>
+<div class="badge">MINECRAFT PERFORMANCE</div>
+<ul><li>RAM <span>8 GB</span></li><li>CPU <span>400%</span></li><li>SSD Storage <span>30 GB</span></li><li>Processor <span>AMD</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 03</div>
-          <h4>3. COPPER PLAN</h4>
-          <p class="plan-desc">For a growing Minecraft server.</p>
-          <div class="price">₹90 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>8 GB</strong></li>
-            <li>CPU <strong>250%</strong></li>
-            <li>Storage <strong>30 GB SSD</strong></li>
-            <li>Processor <strong>Intel</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
+<div class="card">
+<h3>BEDROCK PLAN</h3><div class="price">₹400 <small>/ month</small></div>
+<div class="badge">MINECRAFT PERFORMANCE</div>
+<ul><li>RAM <span>16 GB</span></li><li>CPU <span>600%</span></li><li>SSD Storage <span>40 GB</span></li><li>Processor <span>AMD</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 04</div>
-          <h4>4. IRON PLAN</h4>
-          <p class="plan-desc">A larger resource allocation.</p>
-          <div class="price">₹120 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>16 GB</strong></li>
-            <li>CPU <strong>350%</strong></li>
-            <li>Storage <strong>35 GB SSD</strong></li>
-            <li>Processor <strong>Intel</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
+</div>
 
-      </div>
-    </div>
+<div class="section">
+<h2>👾 Bot Hosting Plans</h2>
+<p>Host your Discord bots and applications</p>
+</div>
+<div class="plans">
 
-<!-- MINECRAFT PERFORMANCE: AMD -->
-    <div class="plan-list" id="performance-list">
-      <div class="plan-heading">
-        <div>
-          <h3>🔥 Minecraft Performance — AMD</h3>
-          <p>Four performance plan options.</p>
-        </div>
-        <button class="close-plans" type="button" onclick="hidePlans()">✕ Close</button>
-      </div>
+<div class="card">
+<h3>BASIC PLAN</h3><div class="price">₹10 <small>/ month</small></div>
+<div class="badge">BOT HOSTING</div>
+<ul><li>RAM <span>250 MB</span></li><li>CPU <span>50%</span></li><li>SSD Storage <span>2 GB</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-      <div class="plan-grid">
+<div class="card">
+<h3>STARTER PLAN</h3><div class="price">₹25 <small>/ month</small></div>
+<div class="badge">BOT HOSTING</div>
+<ul><li>RAM <span>500 MB</span></li><li>CPU <span>75%</span></li><li>SSD Storage <span>3 GB</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 01</div>
-          <h4>1. GOLD PLAN</h4>
-          <p class="plan-desc">Your performance journey starts here.</p>
-          <div class="price">₹50 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>2 GB</strong></li>
-            <li>CPU <strong>200%</strong></li>
-            <li>Storage <strong>10 GB SSD</strong></li>
-            <li>Processor <strong>AMD</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
+<div class="card">
+<h3>PRO PLAN</h3><div class="price">₹50 <small>/ month</small></div>
+<div class="badge">BOT HOSTING</div>
+<ul><li>RAM <span>1.5 GB</span></li><li>CPU <span>100%</span></li><li>SSD Storage <span>5 GB</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 02</div>
-          <h4>2. DIAMOND PLAN</h4>
-          <p class="plan-desc">More resources for your server.</p>
-          <div class="price">₹100 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>4 GB</strong></li>
-            <li>CPU <strong>300%</strong></li>
-            <li>Storage <strong>20 GB SSD</strong></li>
-            <li>Processor <strong>AMD</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
+<div class="card">
+<h3>ADVANCE PLAN</h3><div class="price">₹75 <small>/ month</small></div>
+<div class="badge">BOT HOSTING</div>
+<ul><li>RAM <span>2 GB</span></li><li>CPU <span>150%</span></li><li>SSD Storage <span>10 GB</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 03</div>
-          <h4>3. NETHERITE PLAN</h4>
-          <p class="plan-desc">For more demanding worlds.</p>
-          <div class="price">₹200 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>8 GB</strong></li>
-            <li>CPU <strong>400%</strong></li>
-            <li>Storage <strong>30 GB SSD</strong></li>
-            <li>Processor <strong>AMD</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
+<div class="card">
+<h3>ULTIMATE PLAN</h3><div class="price">₹100 <small>/ month</small></div>
+<div class="badge">BOT HOSTING</div>
+<ul><li>RAM <span>4 GB</span></li><li>CPU <span>250%</span></li><li>SSD Storage <span>20 GB</span></li></ul>
+<a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now →</a>
+</div>
 
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 04</div>
-          <h4>4. BEDROCK PLAN</h4>
-          <p class="plan-desc">The largest plan in this lineup.</p>
-          <div class="price">₹400 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>16 GB</strong></li>
-            <li>CPU <strong>600%</strong></li>
-            <li>Storage <strong>40 GB SSD</strong></li>
-            <li>Processor <strong>AMD</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
+</div>
+</main>
 
-      </div>
-    </div>
+<footer>
+<p>© 2026 SKY HOST & STUDIO. All rights reserved.</p>
+<p>Need help? Join our Discord community.</p>
+<a href="https://discord.gg/Xy7WFDj5EP" style="color:#c4b5fd">Join Discord</a>
+</footer>
 
-<!-- BOT HOSTING -->
-    <div class="plan-list" id="bot-list">
-      <div class="plan-heading">
-        <div>
-          <h3>⭐ Bot Hosting Plans</h3>
-          <p>Five plans for your bot projects.</p>
-        </div>
-        <button class="close-plans" type="button" onclick="hidePlans()">✕ Close</button>
-      </div>
-
-      <div class="plan-grid">
-
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 01</div>
-          <h4>1. BASIC PLAN</h4>
-          <p class="plan-desc">For lightweight bot projects.</p>
-          <div class="price">₹10 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>250 MB</strong></li>
-            <li>CPU <strong>50%</strong></li>
-            <li>Storage <strong>2 GB SSD</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
-
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 02</div>
-          <h4>2. STARTER PLAN</h4>
-          <p class="plan-desc">A little more room to get started.</p>
-          <div class="price">₹25 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>500 MB</strong></li>
-            <li>CPU <strong>75%</strong></li>
-            <li>Storage <strong>3 GB SSD</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
-
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 03</div>
-          <h4>3. PRO PLAN</h4>
-          <p class="plan-desc">For growing bot applications.</p>
-          <div class="price">₹50 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>1.5 GB</strong></li>
-            <li>CPU <strong>100%</strong></li>
-            <li>Storage <strong>5 GB SSD</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
-
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 04</div>
-          <h4>4. ADVANCE PLAN</h4>
-          <p class="plan-desc">More resources for your project.</p>
-          <div class="price">₹75 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>2 GB</strong></li>
-            <li>CPU <strong>150%</strong></li>
-            <li>Storage <strong>10 GB SSD</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
-
-        <article class="plan-card reveal">
-          <div class="plan-number">PLAN 05</div>
-          <h4>5. ULTIMATE PLAN</h4>
-          <p class="plan-desc">The largest bot plan available.</p>
-          <div class="price">₹100 <span>/ month</span></div>
-          <ul class="specs">
-            <li>RAM <strong>4 GB</strong></li>
-            <li>CPU <strong>250%</strong></li>
-            <li>Storage <strong>20 GB SSD</strong></li>
-          </ul>
-          <a class="btn primary" href="https://discord.gg/5KPfqz2B2q" target="_blank" rel="noopener noreferrer">Order via Discord ↗</a>
-        </article>
-      </div>
-
-      <p class="note">
-        Orders are handled through Discord. Payment and server setup are arranged with our SKY HOST & STUDIO TEAMS.
-      </p>
-    </section>
-
-    <section id="about">
-      <h2 class="section-title">Built for Your Community</h2>
-      <p class="subtitle">
-        SKY HOST aims to bring game server and Discord bot hosting together
-        in one place.
-      </p>
-    </section>
-
-    <section id="discord">
-      <h2 class="section-title">Stay Connected</h2>
-      <p class="subtitle">
-        Join our Discord community for launch announcements and updates.
-      </p>
-      <div style="text-align:center">
-        <a class="button" href="https://discord.gg/Xy7WFDj5EP" target="_blank"
-           rel="noopener noreferrer">Visit Discord</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year"></span> SKY HOST. All rights reserved.
-  </footer>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
