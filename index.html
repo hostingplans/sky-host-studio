@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0814">
+  <meta name="description" content="SKY HOST - Minecraft and Discord bot hosting.">
+  <title>SKY HOST | Game Server Hosting</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #f8f7ff;
+      background: #0b0814;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 7%;
+      border-bottom: 1px solid #292139;
+    }
+    .logo { font-size: 25px; font-weight: 900; color: #b79aff; }
+    nav a {
+      color: #d6cfe7;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+    }
+    .hero {
+      text-align: center;
+      padding: 90px 20px 70px;
+      background: radial-gradient(ellipse at top, #38205d, #0b0814 70%);
+    }
+    .tag {
+      color: #c6aaff;
+      letter-spacing: 3px;
+      font-size: 12px;
+    }
+    h1 { font-size: clamp(38px, 7vw, 68px); margin: 20px 0; }
+    h1 span { color: #b79aff; }
+    .hero p { color: #bcb4cc; line-height: 1.8; }
+    .button {
+      display: inline-block;
+      margin: 20px 6px 0;
+      padding: 14px 22px;
+      border-radius: 8px;
+      background: #a47aff;
+      color: #10091d;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .button.secondary {
+      color: white;
+      background: transparent;
+      border: 1px solid #675181;
+    }
+    section { padding: 60px 7%; }
+    .section-title { text-align: center; margin-bottom: 12px; font-size: 32px; }
+    .subtitle { text-align: center; color: #aaa0ba; margin-bottom: 35px; }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .card {
+      padding: 26px;
+      border: 1px solid #382b4b;
+      background: #151020;
+      border-radius: 14px;
+    }
+    .card.featured { border-color: #a47aff; }
+    .card h3 { font-size: 22px; }
+    .price { font-size: 27px; font-weight: bold; color: #c4a6ff; }
+    .price small { font-size: 13px; color: #aaa0ba; }
+    .card p, .card li { color: #bcb4cc; line-height: 1.9; }
+    .card ul { padding-left: 20px; }
+    .card .button { width: 100%; text-align: center; }
+    .note {
+      max-width: 850px;
+      margin: 30px auto 0;
+      color: #958ba6;
+      font-size: 13px;
+      line-height: 1.7;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      border-top: 1px solid #292139;
+      color: #9388a4;
+      font-size: 13px;
+    }
+    @media (max-width: 500px) {
+      header { padding: 18px 5%; }
+      nav a { margin-left: 9px; font-size: 12px; }
+      .logo { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">SKY HOST</div>
+    <nav>
+      <a href="#plans">Plans</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="tag">YOUR WORLD. YOUR SERVER.</div>
+      <h1>Power Your <span>Next World.</span></h1>
+      <p>Reliable game server hosting for your next adventure.<br>
+      Start building your community with SKY HOST.</p>
+      <a class="button" href="#plans">Explore Plans</a>
+      <a class="button secondary" href="#discord">Join Our Community</a>
+    </div>
+
+    <section id="plans">
+      <h2 class="section-title">Choose Your Hosting</h2>
+      <p class="subtitle">Find the right plan for your project.</p>
+
+      <div class="plans">
+        <article class="card">
+          <h3>Minecraft Basic</h3>
+          <p>For small worlds and new communities.</p>
+          <div class="price">Coming Soon</div>
+          <ul>
+            <li>Intel CPU platform</li>
+            <li>Starter server resources</li>
+            <li>Community support</li>
+          </ul>
+          <a class="button secondary" href="#discord">Get Updates</a>
+        </article>
+
+        <article class="card featured">
+          <h3>Minecraft Performance</h3>
+          <p>For bigger adventures and busy servers.</p>
+          <div class="price">Coming Soon</div>
+          <ul>
+            <li>AMD Ryzen CPU platform</li>
+            <li>Performance-focused resources</li>
+            <li>Community support</li>
+          </ul>
+          <a class="button" href="#discord">Get Updates</a>
+        </article>
+
+        <article class="card">
+          <h3>Discord Bot Hosting</h3>
+          <p>Keep your bot project online.</p>
+          <div class="price">Coming Soon</div>
+          <ul>
+            <li>Bot project hosting</li>
+            <li>Plan details coming soon</li>
+            <li>Community support</li>
+          </ul>
+          <a class="button secondary" href="#discord">Get Updates</a>
+        </article>
+      </div>
+
+      <p class="note">
+        Plans are previews. Actual server resources, availability and pricing
+        will be announced before hosting services launch.
+      </p>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">Built for Your Community</h2>
+      <p class="subtitle">
+        SKY HOST aims to bring game server and Discord bot hosting together
+        in one place.
+      </p>
+    </section>
+
+    <section id="discord">
+      <h2 class="section-title">Stay Connected</h2>
+      <p class="subtitle">
+        Join our Discord community for launch announcements and updates.
+      </p>
+      <div style="text-align:center">
+        <a class="button" href="https://discord.gg/Xy7WFDj5EP" target="_blank"
+           rel="noopener noreferrer">Visit Discord</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> SKY HOST. All rights reserved.
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
