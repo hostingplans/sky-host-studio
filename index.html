@@ -156,7 +156,79 @@ footer{border-top:1px solid var(--border);padding:27px 0;text-align:center;color
 @media (max-width: 700px) {
   .modal { padding: 28px 20px; }
 }
-  
+
+  /* ANIMATED NEON BACKGROUND */
+body {
+background:
+radial-gradient(ellipse at 15% 15%, #7028be35, transparent 40%),
+radial-gradient(ellipse at 85% 35%, #00e5ff18, transparent 40%),
+radial-gradient(ellipse at 50% 85%, #ff416c18, transparent 45%),
+#080814;
+background-size: 200% 200%;
+animation: neonBackground 12s ease-in-out infinite alternate;
+color: var(--text);
+overflow-x: hidden;
+}
+
+@keyframes neonBackground {
+0% { background-position: 0% 0%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 100%; }
+}
+
+/* GLOWING SECTION LIGHTS */
+section {
+position: relative;
+isolation: isolate;
+}
+
+section::before {
+content: "";
+position: absolute;
+top: 20%;
+left: -100px;
+width: 200px;
+height: 200px;
+background: #a855f7;
+filter: blur(110px);
+opacity: 0.16;
+pointer-events: none;
+z-index: -1;
+}
+
+/* NEON PLAN CARDS */
+.plan-card, .feature-card, .info-card {
+border: 1px solid #a855f744;
+background: linear-gradient(145deg, #19172ee8, #0b0b19f0);
+box-shadow: 0 0 18px #a855f711;
+transition: transform 0.3s ease, border-color 0.3s ease,
+box-shadow 0.3s ease;
+}
+
+.plan-card:hover, .feature-card:hover, .info-card:hover {
+transform: translateY(-6px);
+border-color: #00e5ff99;
+box-shadow: 0 0 25px #00e5ff22, 0 0 35px #a855f722;
+}
+
+/* NEON BUTTONS */
+.btn {
+transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 0 22px #a855f777;
+}
+
+/* ACCESSIBLE MOTION SETTING */
+@media (prefers-reduced-motion: reduce) {
+body { animation: none; }
+*, *::before, *::after {
+animation-duration: 0.01ms !important;
+transition-duration: 0.01ms !important;
+}
+}
 </style>
 </head>
 <body>
