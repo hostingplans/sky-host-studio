@@ -2,555 +2,824 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090714">
-<meta name="description" content="SKY HOST & STUDIO - Minecraft server and bot hosting plans.">
-<title>SKY HOST & STUDIO | Next Level Hosting</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080814">
+  <meta name="description" content="SKY HOST & STUDIO - Affordable Minecraft and Discord bot hosting.">
+  <title>SKY HOST & STUDIO | Premium Hosting</title>
 
-<style>
-:root {
-  --bg:#090714;
-  --panel:#121020;
-  --purple:#a855f7;
-  --red:#ff3159;
-  --cyan:#00e5ff;
-  --text:#f8f7ff;
-  --muted:#aaa7c4;
-  --border:rgba(168,85,247,.3);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;overflow-x:hidden;
-}
-a{color:inherit}
-button,input{font:inherit}
-button{cursor:pointer}
-body::before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
-  background:
-    radial-gradient(ellipse at 10% 15%,rgba(168,85,247,.13),transparent 35%),
-    radial-gradient(ellipse at 90% 45%,rgba(0,229,255,.08),transparent 30%),
-    radial-gradient(ellipse at 50% 90%,rgba(255,49,89,.08),transparent 35%);
-}
-.navbar{
-  position:sticky;top:0;z-index:50;height:76px;padding:0 5%;
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(9,7,20,.88);backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(168,85,247,.22);
-}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-.brand-name{font-size:15px;font-weight:900;letter-spacing:1px}
-.brand-name span{color:var(--cyan)}
-.brand-sub{font-size:9px;letter-spacing:3px;color:var(--muted);margin-top:5px}
-.logo{
-  width:45px;height:45px;border-radius:14px;position:relative;
-  display:grid;place-items:center;
-  background:linear-gradient(135deg,#9b35ff,#171126 55%,#ff3159);
-  border:1px solid rgba(255,255,255,.3);
-  box-shadow:0 0 15px #a855f755,0 0 28px #ff315922;
-  animation:logoGlow 3s ease-in-out infinite alternate;
-}
-.logo b{font-size:17px;font-weight:1000;font-style:italic}
-.logo b span{color:var(--cyan)}
-@keyframes logoGlow{
-  from{box-shadow:0 0 10px #a855f755,0 0 20px #ff315922}
-  to{box-shadow:0 0 20px #a855f7aa,0 0 30px #00e5ff44}
-}
-.menu-button{
-  width:45px;height:45px;border-radius:12px;
-  background:#171326;border:1px solid #47315e;color:white;
-  display:grid;place-content:center;gap:5px;
-}
-.menu-button span{width:21px;height:2px;background:white;border-radius:5px;transition:.25s}
-.menu-button.active span:first-child{transform:translateY(7px) rotate(45deg)}
-.menu-button.active span:nth-child(2){opacity:0}
-.menu-button.active span:last-child{transform:translateY(-7px) rotate(-45deg)}
-.menu{
-  position:absolute;right:5%;top:67px;width:min(280px,90vw);
-  background:#131020;border:1px solid #573b79;border-radius:17px;
-  padding:10px;box-shadow:0 15px 55px #000b;
-  display:none;
-}
-.menu.open{display:block;animation:menuIn .2s ease-out}
-@keyframes menuIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.menu a,.menu button{
-  display:block;width:100%;padding:14px;text-align:left;text-decoration:none;
-  border:0;border-radius:9px;background:transparent;color:#e9e4fa;
-}
-.menu a:hover,.menu button:hover{background:#28203c;color:var(--cyan)}
-.hero{
-  min-height:570px;padding:100px 20px 85px;text-align:center;
-  display:flex;align-items:center;justify-content:center;position:relative;
-}
-.hero-content{max-width:850px}
-.eyebrow{
-  display:inline-block;padding:9px 14px;border-radius:30px;
-  border:1px solid #7c3aed77;background:#a855f714;
-  color:#d8b4fe;font-size:11px;letter-spacing:2px;font-weight:bold;
-}
-.hero h1{
-  font-size:clamp(38px,8vw,76px);line-height:1.08;
-  letter-spacing:-2px;margin:25px 0 20px;font-weight:950;
-}
-.gradient-text{
-  background:linear-gradient(90deg,var(--purple),var(--cyan),var(--red),var(--purple));
-  background-size:250% auto;color:transparent;background-clip:text;
-  -webkit-background-clip:text;animation:gradientMove 6s linear infinite;
-}
-@keyframes gradientMove{to{background-position:250% center}}
-.hero p{color:var(--muted);line-height:1.9;font-size:15px;max-width:620px;margin:0 auto}
-.hero-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:13px;margin-top:30px}
-.btn{
-  display:inline-flex;justify-content:center;align-items:center;gap:8px;
-  padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:bold;
-  transition:transform .2s,box-shadow .2s;
-}
-.btn:hover{transform:translateY(-3px)}
-.btn-primary{
-  color:white;background:linear-gradient(100deg,#8b35ef,#e92e68);
-  box-shadow:0 0 22px #a855f744;
-}
-.btn-secondary{border:1px solid #54416f;background:#171326;color:white}
-.btn-secondary:hover{box-shadow:0 0 20px #00e5ff22}
-.stats{
-  max-width:850px;margin:0 auto 30px;padding:0 18px;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
-}
-.stat{
-  background:#141123b8;border:1px solid #332447;border-radius:14px;
-  padding:20px 8px;text-align:center;
-}
-.stat strong{display:block;font-size:25px;color:var(--cyan)}
-.stat span{font-size:11px;color:var(--muted);display:block;margin-top:8px}
-.section{max-width:1150px;margin:auto;padding:65px 20px}
-.section-heading{text-align:center;margin-bottom:32px}
-.kicker{font-size:11px;color:var(--cyan);letter-spacing:3px;font-weight:bold}
-.section-heading h2{font-size:clamp(27px,5vw,42px);margin:12px 0}
-.section-heading p{color:var(--muted);line-height:1.8;font-size:14px}
-.category-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.category{
-  text-align:left;position:relative;overflow:hidden;padding:23px;
-  min-height:190px;border-radius:17px;background:linear-gradient(145deg,#19132c,#100f1d);
-  border:1px solid #403050;color:white;transition:.25s;
-}
-.category:hover,.category.selected{
-  transform:translateY(-4px);border-color:var(--cyan);
-  box-shadow:0 0 24px #00e5ff19,0 0 25px #a855f719;
-}
-.category:nth-child(2):hover{border-color:var(--red);box-shadow:0 0 25px #ff315922}
-.category:nth-child(3):hover{border-color:var(--purple)}
-.category-icon{font-size:28px;margin-bottom:15px}
-.category h3{font-size:17px;margin:0 0 10px}
-.category p{color:var(--muted);font-size:12px;line-height:1.7}
-.category .open-label{color:var(--cyan);font-size:12px;font-weight:bold}
-.category:nth-child(2) .open-label{color:#ff8095}
-.category:nth-child(3) .open-label{color:#c7a1ff}
-.plans-area{margin-top:25px}
-.plan-group{display:none}
-.plan-group.active{display:block;animation:reveal .35s ease}
-@keyframes reveal{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.group-heading{padding:10px 0 18px}
-.group-heading h3{font-size:23px;margin:0 0 8px}
-.group-heading p{color:var(--muted);font-size:13px;line-height:1.7}
-.plans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.plan-card{
-  display:flex;flex-direction:column;position:relative;overflow:hidden;
-  padding:22px;border-radius:16px;
-  background:linear-gradient(155deg,#1a1530,#100f1d 75%);
-  border:1px solid #3c2b50;transition:transform .25s,border-color .25s,box-shadow .25s;
-}
-.plan-card::before{
-  content:"";height:2px;position:absolute;top:0;left:0;right:0;
-  background:linear-gradient(90deg,var(--purple),var(--cyan),var(--red));
-  background-size:200% 100%;animation:gradientMove 5s linear infinite;
-}
-.plan-card:hover{transform:translateY(-5px);border-color:#9b62e8;box-shadow:0 12px 32px #0005,0 0 20px #a855f722}
-.plan-type{font-size:9px;color:#c7a3ff;letter-spacing:2px;font-weight:bold}
-.plan-card h4{font-size:18px;margin:14px 0}
-.price{font-size:34px;font-weight:900;color:white;letter-spacing:-1px}
-.price small{font-size:12px;color:var(--muted);font-weight:normal;letter-spacing:0}
-.specs{list-style:none;padding:0;margin:20px 0 22px;flex:1}
-.specs li{
-  display:flex;justify-content:space-between;gap:8px;padding:11px 0;
-  border-bottom:1px solid #ffffff0c;font-size:12px;color:var(--muted);
-}
-.specs li strong{color:#f8f7ff;text-align:right}
-.order{
-  display:block;text-align:center;text-decoration:none;color:white;font-weight:bold;
-  font-size:13px;padding:13px;border-radius:9px;
-  background:linear-gradient(100deg,#7438c9,#b13ee5 55%,#ed345e);
-  box-shadow:0 0 14px #a855f722;transition:.2s;
-}
-.order:hover{box-shadow:0 0 22px #a855f766;filter:brightness(1.12)}
-.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.info-card{
-  padding:24px;border-radius:15px;background:#151225;
-  border:1px solid #302640;
-}
-.info-card .icon{font-size:25px}
-.info-card h3{font-size:17px}
-.info-card p{color:var(--muted);font-size:13px;line-height:1.9}
-.discord-box{
-  text-align:center;padding:45px 22px;border-radius:22px;
-  border:1px solid #5d377c;
-  background:radial-gradient(ellipse at top,#35204f,#12101e 75%);
-}
-.discord-box h2{font-size:clamp(27px,5vw,40px);margin:12px 0}
-.discord-box p{color:var(--muted);font-size:14px;line-height:1.8}
-.build-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.build-item{padding:19px;border:1px solid #302640;background:#141122;border-radius:13px}
-.build-item strong{color:var(--cyan);display:block;margin-bottom:8px}
-.build-item span{font-size:13px;color:var(--muted);line-height:1.7}
-footer{border-top:1px solid #282139;padding:30px 20px;text-align:center;color:var(--muted);font-size:12px;line-height:2}
-footer a{color:#c4a2ff;text-decoration:none}
-.modal-backdrop{
-  position:fixed;inset:0;z-index:100;background:#000b;display:none;
-  align-items:center;justify-content:center;padding:18px;
-}
-.modal-backdrop.open{display:flex}
-.modal{
-  width:100%;max-width:400px;padding:27px;border-radius:18px;
-  background:#151225;border:1px solid #69418b;box-shadow:0 0 40px #a855f733;
-}
-.modal h2{margin:0 0 10px}
-.modal p{color:var(--muted);font-size:13px;line-height:1.7}
-.modal input{
-  width:100%;padding:13px;margin:7px 0;border-radius:9px;
-  border:1px solid #403050;background:#0d0b18;color:white;
-}
-.modal .btn{width:100%;margin-top:12px;border:0}
-.close-modal{float:right;background:transparent;border:0;color:white;font-size:25px}
-.notice{font-size:11px!important;color:#ffb5c3!important}
-@media(max-width:850px){
-  .plans{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .category-list{grid-template-columns:1fr}
-  .category{min-height:0}
-  .info-grid{grid-template-columns:1fr}
-}
-@media(max-width:480px){
-  .navbar{height:68px;padding:0 15px}
-  .brand-name{font-size:12px}
-  .brand-sub{font-size:8px;letter-spacing:2px}
-  .logo{width:40px;height:40px}
-  .hero{min-height:0;padding:80px 17px 55px}
-  .hero h1{letter-spacing:-1.5px}
-  .stats{gap:7px;padding:0 12px}
-  .stat{padding:16px 5px}
-  .stat strong{font-size:21px}
-  .stat span{font-size:9px}
-  .section{padding:48px 14px}
-  .plans{grid-template-columns:1fr}
-  .plan-card{padding:22px}
-  .build-list{grid-template-columns:1fr}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
-}
-</style>
+  <style>
+    :root {
+      --bg: #080814;
+      --panel: #111124;
+      --panel2: #17172e;
+      --purple: #a855f7;
+      --cyan: #00e5ff;
+      --red: #ff416c;
+      --text: #f4f3ff;
+      --muted: #b6b4cc;
+      --border: rgba(168,85,247,.28);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    body {
+      background:
+        radial-gradient(ellipse at 15% 5%, rgba(112,40,190,.15), transparent 40%),
+        radial-gradient(ellipse at 90% 45%, rgba(0,229,255,.07), transparent 38%),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+
+    .container { width: min(1120px, 92%); margin: auto; }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--purple), var(--cyan), var(--red));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,8,20,.91);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 900;
+      letter-spacing: .5px;
+    }
+
+    .logo {
+      width: 47px;
+      height: 47px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #8b35ed, #192c77);
+      border: 1px solid rgba(0,229,255,.7);
+      box-shadow: 0 0 20px rgba(168,85,247,.4);
+      animation: logoGlow 3s ease-in-out infinite alternate;
+      font-size: 17px;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    @keyframes logoGlow {
+      from { box-shadow: 0 0 10px rgba(168,85,247,.3); }
+      to { box-shadow: 0 0 25px rgba(0,229,255,.45); }
+    }
+
+    .menu-button {
+      width: 45px;
+      height: 43px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: white;
+      background: var(--panel);
+      font-size: 25px;
+    }
+
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 68px;
+      right: 4%;
+      width: min(290px, 92vw);
+      padding: 12px;
+      background: #111124;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 15px 50px #0009;
+    }
+
+    .nav-menu.open {
+      display: grid;
+      animation: fadeIn .18s ease;
+    }
+
+    .nav-menu a, .nav-menu button {
+      text-align: left;
+      color: var(--text);
+      background: transparent;
+      border: 0;
+      padding: 12px;
+      border-radius: 9px;
+    }
+
+    .nav-menu a:hover, .nav-menu button:hover {
+      background: rgba(168,85,247,.15);
+      color: var(--cyan);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      min-height: 520px;
+      padding: 90px 0 75px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .kicker {
+      display: inline-block;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 15px;
+      margin-bottom: 22px;
+      color: var(--cyan);
+      background: rgba(168,85,247,.08);
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 7vw, 70px);
+      line-height: 1.1;
+      margin-bottom: 22px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 28px;
+      font-size: 17px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: 0;
+      border-radius: 11px;
+      padding: 12px 20px;
+      font-weight: 800;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(110deg, #8038e8, #a855f7);
+      box-shadow: 0 0 20px rgba(168,85,247,.2);
+    }
+
+    .btn-primary:hover { box-shadow: 0 0 26px rgba(168,85,247,.45); }
+
+    .btn-outline {
+      color: var(--cyan);
+      background: transparent;
+      border: 1px solid var(--cyan);
+    }
+
+    section { padding: 65px 0; }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(27px, 5vw, 39px);
+      margin-bottom: 9px;
+    }
+
+    .section-heading p { color: var(--muted); }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature, .plan-category, .info-card {
+      background: linear-gradient(145deg, rgba(24,24,48,.96), rgba(13,13,28,.96));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 23px;
+    }
+
+    .feature { text-align: center; }
+    .feature .emoji { font-size: 30px; margin-bottom: 8px; }
+    .feature p, .info-card p { color: var(--muted); font-size: 14px; }
+
+    .plan-categories { display: grid; gap: 20px; }
+
+    .category-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--text);
+      background: transparent;
+      border: 0;
+      text-align: left;
+    }
+
+    .category-toggle h3 { font-size: 21px; }
+    .category-toggle p { color: var(--muted); font-size: 13px; }
+    .category-toggle .arrow { font-size: 25px; color: var(--cyan); }
+
+    .plan-list {
+      display: none;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding-top: 22px;
+    }
+
+    .plan-list.open { display: grid; animation: fadeIn .2s ease; }
+
+    .plan {
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 14px;
+      padding: 20px;
+      background: rgba(5,5,17,.55);
+      transition: border-color .2s, transform .2s;
+    }
+
+    .plan:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+    }
+
+    .plan h4 { font-size: 19px; letter-spacing: 1px; }
+    .price { font-size: 29px; font-weight: 900; margin: 8px 0; }
+    .price small { color: var(--muted); font-size: 13px; font-weight: 400; }
+
+    .plan ul {
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+      margin: 14px 0 18px;
+    }
+
+    .plan li { padding: 4px 0; }
+    .plan li::before { content: "✓ "; color: var(--cyan); font-weight: bold; }
+    .plan .btn { width: 100%; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .info-card h3 { margin-bottom: 10px; }
+    .info-card .emoji { font-size: 27px; }
+
+    .discord-section {
+      text-align: center;
+      background: radial-gradient(ellipse at center, rgba(112,40,190,.17), transparent 70%);
+    }
+
+    .discord-section p {
+      max-width: 600px;
+      color: var(--muted);
+      margin: 0 auto 22px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 27px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Login and Register modal */
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      overflow-y: auto;
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal {
+      position: relative;
+      width: min(430px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 30px 25px;
+      border: 1px solid rgba(168,85,247,.6);
+      border-radius: 21px;
+      background: linear-gradient(145deg, #17172f, #0c0c1b);
+      box-shadow: 0 0 45px rgba(168,85,247,.2);
+      animation: fadeIn .2s ease;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 13px;
+      color: var(--muted);
+      background: transparent;
+      border: 0;
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .modal .kicker { margin: 0 0 10px; font-size: 10px; }
+    .modal h2 { font-size: 27px; margin-bottom: 3px; }
+    .modal > p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+
+    .modal label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin: 13px 0 6px;
+    }
+
+    .modal input {
+      width: 100%;
+      padding: 12px;
+      color: white;
+      background: #090919;
+      border: 1px solid #383451;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    .modal input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 2px rgba(0,229,255,.1);
+    }
+
+    .modal input::placeholder { color: #77758d; }
+    .modal input[hidden] { display: none; }
+
+    .modal form > .btn { width: 100%; margin-top: 20px; }
+
+    #authMessage {
+      margin-top: 12px;
+      color: var(--cyan);
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .switch-auth {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .switch-auth button {
+      color: var(--cyan);
+      background: none;
+      border: 0;
+      font-weight: bold;
+      padding: 4px;
+    }
+
+    .modal .notice {
+      margin-top: 17px;
+      padding: 10px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.04);
+      color: #aaa7c3;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    [hidden] { display: none !important; }
+
+    @media (max-width: 700px) {
+      .features { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr; }
+      .plan-list { grid-template-columns: 1fr; }
+      .hero { min-height: 470px; padding: 70px 0 55px; }
+      section { padding: 48px 0; }
+      .brand { font-size: 13px; }
+      .logo { width: 42px; height: 42px; }
+      .modal { padding: 28px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<nav class="navbar">
-  <a class="brand" href="#home" aria-label="SKY HOST and STUDIO home">
-    <div class="logo"><b><span>S</span>H<span>S</span></b></div>
-    <div>
-      <div class="brand-name">SKY HOST <span>&</span> STUDIO</div>
-      <div class="brand-sub">LEVEL UP YOUR HOSTING</div>
-    </div>
-  </a>
+<header>
+  <div class="container navbar">
+    <a href="#home" class="brand" aria-label="SKY HOST & STUDIO Home">
+      <div class="logo">SHS</div>
+      <div>
+        <div>SKY HOST <span class="gradient-text">& STUDIO</span></div>
+        <small>YOUR WORLD. YOUR SERVER.</small>
+      </div>
+    </a>
 
-  <button class="menu-button" id="menuButton" aria-label="Open navigation menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+    <button class="menu-button" id="menuButton"
+      type="button" aria-label="Open navigation menu"
+      aria-expanded="false">☰</button>
 
-  <div class="menu" id="menu">
-    <a href="#home">⌂ &nbsp; Home</a>
-    <a href="#about">✦ &nbsp; About Us</a>
-    <a href="#plans">▦ &nbsp; Plans</a>
-    <a href="#build">⚙ &nbsp; Our Build</a>
-    <a href="#discord">◈ &nbsp; Discord</a>
-    <button type="button" id="signInButton">⇥ &nbsp; Sign In</button>
-  </div>
-</nav>
-
-<header class="hero" id="home">
-  <div class="hero-content">
-    <div class="eyebrow">✦ YOUR SERVER. YOUR WORLD. YOUR RULES.</div>
-    <h1>WELCOME TO<br><span class="gradient-text">SKY HOST & STUDIO</span></h1>
-    <p>
-      Your next adventure starts here. Explore affordable Minecraft server
-      hosting and bot hosting plans, compare resources, and connect with our
-      community to get started.
-    </p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#plans">Explore Our Plans ↗</a>
-      <a class="btn btn-secondary" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Join Our Discord</a>
-    </div>
+    <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+      <a href="#home">⌂ Home</a>
+      <a href="#about">ⓘ About Us</a>
+      <a href="#plans">▦ Plans</a>
+      <a href="https://discord.gg/Xy7WFDj5EP"
+        target="_blank" rel="noopener noreferrer">☏ Discord</a>
+      <a href="#our-build">⚙ Our Build</a>
+      <button type="button" id="signInButton">♙ Sign In</button>
+    </nav>
   </div>
 </header>
 
-<div class="stats">
-  <div class="stat"><strong>13</strong><span>HOSTING PLANS</span></div>
-  <div class="stat"><strong>3</strong><span>PLAN CATEGORIES</span></div>
-  <div class="stat"><strong>24/7</strong><span>COMMUNITY ACCESS</span></div>
-</div>
-
 <main>
-<section class="section" id="plans">
-  <div class="section-heading">
-    <div class="kicker">FIND YOUR PERFECT PLAN</div>
-    <h2>Choose Your <span class="gradient-text">Power</span></h2>
-    <p>Choose a category below to reveal its plans and compare the specifications.</p>
-  </div>
-
-  <div class="category-list">
-    <button class="category selected" data-category="basic" aria-expanded="true">
-      <div class="category-icon">🍁</div>
-      <h3>MINECRAFT BASIC PLANS</h3>
-      <p>Intel CPU plans for your Minecraft server, from small worlds to bigger adventures.</p>
-      <span class="open-label">View 4 Plans ↓</span>
-    </button>
-
-    <button class="category" data-category="performance" aria-expanded="false">
-      <div class="category-icon">⚡</div>
-      <h3>MINECRAFT PERFORMANCE PLANS</h3>
-      <p>AMD CPU plans with different resource options for your Minecraft world.</p>
-      <span class="open-label">View 4 Plans ↓</span>
-    </button>
-
-    <button class="category" data-category="bot" aria-expanded="false">
-      <div class="category-icon">❄️</div>
-      <h3>BOT HOSTING</h3>
-      <p>Hosting options for Discord bots and other supported applications.</p>
-      <span class="open-label">View 5 Plans ↓</span>
-    </button>
-  </div>
-
-  <div class="plans-area">
-
-    <div class="plan-group active" id="group-basic">
-      <div class="group-heading">
-        <h3>🍁 Minecraft Basic Plans</h3>
-        <p>Intel CPU · Select a plan and order through our Discord community.</p>
-      </div>
-      <div class="plans">
-        <article class="plan-card">
-          <div class="plan-type">MINECRAFT BASIC</div><h4>WOOD PLAN</h4>
-          <div class="price">₹30 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>2 GB</strong></li><li>CPU <strong>150%</strong></li><li>SSD Storage <strong>20 GB</strong></li><li>Processor <strong>Intel</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-        <article class="plan-card">
-          <div class="plan-type">MINECRAFT BASIC</div><h4>STONE PLAN</h4>
-          <div class="price">₹60 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>4 GB</strong></li><li>CPU <strong>200%</strong></li><li>SSD Storage <strong>25 GB</strong></li><li>Processor <strong>Intel</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-        <article class="plan-card">
-          <div class="plan-type">MINECRAFT BASIC</div><h4>COPPER PLAN</h4>
-          <div class="price">₹90 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>8 GB</strong></li><li>CPU <strong>250%</strong></li><li>SSD Storage <strong>30 GB</strong></li><li>Processor <strong>Intel</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-        <article class="plan-card">
-          <div class="plan-type">MINECRAFT BASIC</div><h4>IRON PLAN</h4>
-          <div class="price">₹120 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>16 GB</strong></li><li>CPU <strong>350%</strong></li><li>SSD Storage <strong>35 GB</strong></li><li>Processor <strong>Intel</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="kicker">WELCOME TO SKY HOST & STUDIO</div>
+      <h1>Power Your World<br>With <span class="gradient-text">Premium Hosting</span></h1>
+      <p>
+        Affordable Minecraft server hosting and Discord bot hosting.
+        Build your community, launch your server, and create something amazing.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#plans">Explore Hosting Plans</a>
+        <a class="btn btn-outline"
+          href="https://discord.gg/Xy7WFDj5EP"
+          target="_blank" rel="noopener noreferrer">Join Our Discord</a>
       </div>
     </div>
-
-    <div class="plan-group" id="group-performance">
-      <div class="group-heading">
-        <h3>⚡ Minecraft Performance Plans</h3>
-        <p>AMD CPU · Explore the performance plan options.</p>
-      </div>
-      <div class="plans">
-        <article class="plan-card">
-          <div class="plan-type">MINECRAFT PERFORMANCE</div><h4>GOLD PLAN</h4>
-          <div class="price">₹50 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>2 GB</strong></li><li>CPU <strong>200%</strong></li><li>SSD Storage <strong>10 GB</strong></li><li>Processor <strong>AMD</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-        <article class="plan-card">
-          <div class="plan-type">MINECRAFT PERFORMANCE</div><h4>DIAMOND PLAN</h4>
-          <div class="price">₹100 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>4 GB</strong></li><li>CPU <strong>300%</strong></li><li>SSD Storage <strong>20 GB</strong></li><li>Processor <strong>AMD</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-        <article class="plan-card">
-          <div class="plan-type">MINECRAFT PERFORMANCE</div><h4>NETHERITE PLAN</h4>
-          <div class="price">₹200 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>8 GB</strong></li><li>CPU <strong>400%</strong></li><li>SSD Storage <strong>30 GB</strong></li><li>Processor <strong>AMD</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-        <article class="plan-card">
-          <div class="plan-type">MINECRAFT PERFORMANCE</div><h4>BEDROCK PLAN</h4>
-          <div class="price">₹400 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>16 GB</strong></li><li>CPU <strong>600%</strong></li><li>SSD Storage <strong>40 GB</strong></li><li>Processor <strong>AMD</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-      </div>
-    </div>
-
-    <div class="plan-group" id="group-bot">
-      <div class="group-heading">
-        <h3>❄️ Bot Hosting</h3>
-        <p>Choose a resource package for your bot or supported application.</p>
-      </div>d  
-      <div class="plans">
-        <article class="plan-card">
-          <div class="plan-type">BOT HOSTING</div><h4>BASIC PLAN</h4>
-          <div class="price">₹10 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>250 MB</strong></li><li>CPU <strong>50%</strong></li><li>SSD Storage <strong>2 GB</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-        <article class="plan-card">
-          <div class="plan-type">BOT HOSTING</div><h4>STARTER PLAN</h4>
-          <div class="price">₹25 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>500 MB</strong></li><li>CPU <strong>75%</strong></li><li>SSD Storage <strong>3 GB</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-        <article class="plan-card">
-          <div class="plan-type">BOT HOSTING</div><h4>PRO PLAN</h4>
-          <div class="price">₹50 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>1.5 GB</strong></li><li>CPU <strong>100%</strong></li><li>SSD Storage <strong>5 GB</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-        <article class="plan-card">
-           <div class="plan-type">BOT HOSTING</div><h4>ADVANCE PLAN</h4>
-          <div class="price">₹75 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>2 GB</strong></li><li>CPU <strong>150%</strong></li><li>SSD Storage <strong>10 GB</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-        <article class="plan-card">
-          <div class="plan-type">BOT HOSTING</div><h4>ULTIMATE PLAN</h4>
-          <div class="price">₹100 <small>/ month</small></div>
-          <ul class="specs"><li>RAM <strong>4 GB</strong></li><li>CPU <strong>250%</strong></li><li>SSD Storage <strong>20 GB</strong></li></ul>
-          <a class="order" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Order Now ↗</a>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <section class="section" id="about">
-  <div class="section-heading">
-    <div class="kicker">GET TO KNOW US</div>
-    <h2>About <span class="gradient-text">SKY HOST & STUDIO</span></h2>
-    <p>Hosting options for builders, gamers, server owners, and bot developers.</p>
-  </div>
-  <div class="info-grid">
-    <div class="info-card"><div class="icon">🍁</div><h3>Gaming Hosting</h3><p>We list Minecraft hosting options with different RAM, CPU allocation, and SSD storage packages to suit different needs.</p></div>
-    <div class="info-card"><div class="icon">❄️</div><h3>Bot Hosting</h3><p>Explore a range of bot hosting plans, from a small starter package to options with more resources.</p></div>
-    <div class="info-card"><div class="icon">🧿</div><h3>Community First</h3><p>Need help choosing a package? Join our Discord community to contact us and discuss your hosting requirements.</p></div>
-  </div>
   </section>
 
-  <section class="section" id="build">
-  <div class="section-heading">
-    <div class="kicker">OUR BUILD</div>
-    <h2>What We <span class="gradient-text">Focus On</span></h2>
-    <p>Our hosting plans are organized around the resources and experience you need.</p>
-  </div>
-  <div class="build-list">
-    <div class="build-item"><strong>01 / Resource Choices</strong><span>Different RAM, CPU allocation, and SSD storage options across our listed plans.</span></div>
-    <div class="build-item"><strong>02 / Minecraft Servers</strong><span>Separate basic and performance categories so you can compare packages more easily.</span></div>
-    <div class="build-item"><strong>03 / Bot Applications</strong><span>Several bot hosting packages for different application resource requirements.</span></div>
-    <div class="build-item"><strong>04 / Community Support</strong><span>Connect with our team through Discord for questions and ordering information.</span></div>
-  </div>
+  <section id="about">
+    <div class="container">
+      <div class="section-heading">
+        <div class="kicker">WHO WE ARE</div>
+        <h2>About <span class="gradient-text">Us</span></h2>
+        <p>Hosting made simple, affordable, and accessible.</p>
+      </div>
+
+      <div class="features">
+        <article class="feature">
+          <div class="emoji">⚡</div>
+          <h3>Powerful Hosting</h3>
+          <p>Choose a plan that fits your Minecraft server or bot project.</p>
+        </article>
+        <article class="feature">
+          <div class="emoji">🚀</div>
+          <h3>Budget Friendly</h3>
+          <p>Simple monthly plans with clear pricing and resource details.</p>
+        </article>
+        <article class="feature">
+          <div class="emoji">🌐</div>
+          <h3>Community Support</h3>
+          <p>Join our Discord community to contact the team and get assistance.</p>
+        </article>
+      </div>
+    </div>
   </section>
 
+  <section id="plans">
+    <div class="container">
+      <div class="section-heading">
+        <div class="kicker">FIND YOUR PERFECT PLAN</div>
+        <h2>Our Hosting <span class="gradient-text">Plans</span></h2>
+        <p>Choose a category below to view available plans and resources.</p>
+      </div>
 
-  <section class="section" id="discord">
-  <div class="discord-box">
-    <div class="kicker">LET'S CONNECT</div>
-    <h2>Join Our <span class="gradient-text">Discord</span></h2>
-    <p>Have a question, want to order a plan, or need help choosing?<br>Come talk to us in our community.</p>
-    <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP" target="_blank" rel="noopener">Join SKY HOST Discord ↗</a>
-  </div>
-</section>
+      <div class="plan-categories">
+
+        <!-- MINECRAFT BASIC: INTEL -->
+
+        <article class="plan-category">
+          <button class="category-toggle" type="button"
+            aria-expanded="false" aria-controls="basicPlans">
+            <span>
+              <h3>🍁 Minecraft Basic Plans</h3>
+              <p>Intel CPU · Ideal for getting started</p>
+            </span>
+            <span class="arrow">＋</span>
+          </button>
+
+          <div class="plan-list" id="basicPlans">
+
+            <article class="plan">
+              <h4>WOOD</h4>
+              <div class="price">₹30 <small>/month</small></div>
+              <ul>
+                <li>RAM: 2 GB</li>
+                <li>CPU: 150%</li>
+                <li>SSD: 20 GB</li>
+                <li>Intel CPU</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+            <article class="plan">
+              <h4>STONE</h4>
+              <div class="price">₹60 <small>/month</small></div>
+              <ul>
+                <li>RAM: 4 GB</li>
+                <li>CPU: 200%</li>
+                <li>SSD: 25 GB</li>
+                <li>Intel CPU</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+            <article class="plan">
+              <h4>COPPER</h4>
+              <div class="price">₹90 <small>/month</small></div>
+              <ul>
+                <li>RAM: 8 GB</li>
+                <li>CPU: 250%</li>
+                <li>SSD: 30 GB</li>
+                <li>Intel CPU</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+            <article class="plan">
+              <h4>IRON</h4>
+              <div class="price">₹120 <small>/month</small></div>
+              <ul>
+                <li>RAM: 16 GB</li>
+                <li>CPU: 350%</li>
+                <li>SSD: 35 GB</li>
+                <li>Intel CPU</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+          </div>
+        </article>
+
+        <!-- MINECRAFT PERFORMANCE: AMD -->
+
+        <article class="plan-category">
+          <button class="category-toggle" type="button"
+            aria-expanded="false" aria-controls="performancePlans">
+            <span>
+              <h3>🔥 Minecraft Performance Plans</h3>
+              <p>AMD CPU · Higher resource options</p>
+            </span>
+            <span class="arrow">＋</span>
+          </button>
+
+          <div class="plan-list" id="performancePlans">
+
+            <article class="plan">
+              <h4>GOLD</h4>
+              <div class="price">₹50 <small>/month</small></div>
+              <ul>
+                <li>RAM: 2 GB</li>
+                <li>CPU: 200%</li>
+                <li>SSD: 10 GB</li>
+                <li>AMD CPU</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+            <article class="plan">
+              <h4>DIAMOND</h4>
+              <div class="price">₹100 <small>/month</small></div>
+              <ul>
+                <li>RAM: 4 GB</li>
+                <li>CPU: 300%</li>
+                <li>SSD: 20 GB</li>
+                <li>AMD CPU</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+            <article class="plan">
+              <h4>NETHERITE</h4>
+              <div class="price">₹200 <small>/month</small></div>
+              <ul>
+                <li>RAM: 8 GB</li>
+                <li>CPU: 400%</li>
+                <li>SSD: 30 GB</li>
+                <li>AMD CPU</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+            <article class="plan">
+              <h4>BEDROCK</h4>
+              <div class="price">₹400 <small>/month</small></div>
+              <ul>
+                <li>RAM: 16 GB</li>
+                <li>CPU: 600%</li>
+                <li>SSD: 40 GB</li>
+                <li>AMD CPU</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+          </div>
+        </article>
+
+        <!-- BOT HOSTING -->
+
+        <article class="plan-category">
+          <button class="category-toggle" type="button"
+            aria-expanded="false" aria-controls="botPlans">
+            <span>
+              <h3>❄️ Discord Bot Hosting</h3>
+              <p>Affordable plans for bot projects</p>
+            </span>
+            <span class="arrow">＋</span>
+          </button>
+
+          <div class="plan-list" id="botPlans">
+
+            <article class="plan">
+              <h4>BASIC</h4>
+              <div class="price">₹10 <small>/month</small></div>
+              <ul>
+                <li>RAM: 250 MB</li>
+                <li>CPU: 50%</li>
+                <li>SSD: 2 GB</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+            <article class="plan">
+              <h4>STARTER</h4>
+              <div class="price">₹25 <small>/month</small></div>
+              <ul>
+                <li>RAM: 500 MB</li>
+                <li>CPU: 75%</li>
+                <li>SSD: 3 GB</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+    <article class="plan">
+              <h4>PRO</h4>
+              <div class="price">₹50 <small>/month</small></div>
+              <ul>
+                <li>RAM: 1.5 GB</li>
+                <li>CPU: 100%</li>
+                <li>SSD: 5 GB</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+            <article class="plan">
+              <h4>ADVANCE</h4>
+              <div class="price">₹75 <small>/month</small></div>
+              <ul>
+                <li>RAM: 2 GB</li>
+                <li>CPU: 150%</li>
+                <li>SSD: 10 GB</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+            <article class="plan">
+              <h4>ULTIMATE</h4>
+              <div class="price">₹100 <small>/month</small></div>
+              <ul>
+                <li>RAM: 4 GB</li>
+                <li>CPU: 250%</li>
+                <li>SSD: 20 GB</li>
+              </ul>
+              <a class="btn btn-primary" href="https://discord.gg/Xy7WFDj5EP"
+                target="_blank" rel="noopener noreferrer">Order Now</a>
+            </article>
+
+          </div>
+        </article>
+
+        </div>
+    </div>
+  </section>
+
+  <section id="our-build">
+    <div class="container">
+      <div class="section-heading">
+        <div class="kicker">BUILT FOR YOUR PROJECTS</div>
+        <h2>Our <span class="gradient-text">Build</span></h2>
+        <p>Hosting options for different needs and budgets.</p>
+      </div>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <div class="emoji">💻</div>
+          <h3>Minecraft Servers</h3>
+          <p>
+            Find a plan for your Minecraft world, from a small server
+            to a larger project. Select a plan above to see its listed resources.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="emoji">👾</div>
+          <h3>Discord Bots</h3>
+          <p>
+            Choose from five bot hosting plans for your Discord bot projects.
+            Contact us through Discord for ordering details.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="discord-section" id="community">
+    <div class="container">
+      <div class="kicker">JOIN THE COMMUNITY</div>
+      <h2>Let's Build Something <span class="gradient-text">Amazing</span></h2>
+      <p>
+        Have questions about a plan or want to place an order?
+        Join our Discord community to contact the team.
+      </p>
+      <a class="btn btn-primary"
+        href="https://discord.gg/Xy7WFDj5EP"
+        target="_blank" rel="noopener noreferrer">Join SKY HOST Discord</a>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div class="brand" style="justify-content:center;margin-bottom:15px">
-    <div class="logo"><b><span>S</span>H<span>S</span></b></div>
-    <div>
-      <div class="brand-name">SKY HOST <span>&</span> STUDIO</div>
-      <div class="brand-sub">LEVEL UP YOUR HOSTING</div>
-    </div>
+  <div class="container">
+    <p><strong class="gradient-text">SKY HOST & STUDIO</strong></p>
+    <p>© <span id="year"></span> SKY HOST & STUDIO. All rights reserved.</p>
+    <p>Hosting for your next big idea.</p>
   </div>
-  <div>© 2026 SKY HOST & STUDIO. All rights reserved.</div>
-  <div><a href="#home">Home</a> · <a href="#about">About Us</a> · <a href="#plans">Plans</a> · <a href="#discord">Discord</a></div>
 </footer>
 
-<div class="modal-backdrop" id="signInModal" role="dialog" aria-modal="true" aria-labelledby="signInTitle">
+<!-- LOGIN / REGISTER MODAL -->
+
+<div class="modal-backdrop" id="signInModal"
+  role="dialog" aria-modal="true" aria-labelledby="authTitle">
+
   <div class="modal">
-    <button class="close-modal" id="closeModal" aria-label="Close sign in">&times;</button>
-    <h2 id="signInTitle"><span class="gradient-text">Sign In</span></h2>
-    <p>Customer account access will be available after authentication is connected.</p>
-    <form id="demoForm">
-      <input type="email" placeholder="Email address" autocomplete="email" required>
-      <input type="password" placeholder="Password" autocomplete="current-password" required>
-      <button class="btn btn-primary" type="submit">Continue</button>
-    </form>
-    <p class="notice" id="signInNotice">Demo only: this form does not create accounts or authenticate users. Do not enter a real password.</p>
-  </div>
-</div>
-
-  <script>
-const menuButton = document.getElementById("menuButton");
-const menu = document.getElementById("menu");
-
-function closeMenu(){
-  menu.classList.remove("open");
-  menuButton.classList.remove("active");
-  menuButton.setAttribute("aria-expanded","false");
-  menuButton.setAttribute("aria-label","Open navigation menu");
-}
-menuButton.addEventListener("click",()=>{
-  const opened = menu.classList.toggle("open");
-  menuButton.classList.toggle("active",opened);
-  menuButton.setAttribute("aria-expanded",String(opened));
-  menuButton.setAttribute("aria-label",opened?"Close navigation menu":"Open navigation menu");
-});
-menu.querySelectorAll("a").forEach(link=>link.addEventListener("click",closeMenu));
-
-const categoryButtons = document.querySelectorAll("[data-category]");
-const groups = document.querySelectorAll(".plan-group");
-
-categoryButtons.forEach(button=>{
-  button.addEventListener("click",()=>{
-    const category = button.dataset.category;
-    const target = document.getElementById("group-"+category);
-    const wasActive = target.classList.contains("active");
-
-
-groups.forEach(group=>group.classList.remove("active"));
-    categoryButtons.forEach(item=>{
-      item.classList.remove("selected");
-      item.setAttribute("aria-expanded","false");
-      item.querySelector(".open-label").textContent =
-        "View "+(item.dataset.category==="bot"?"5":"4")+" Plans ↓";
-    });
-
-    if(!wasActive){
-      target.classList.add("active");
-      button.classList.add("selected");
-      button.setAttribute("aria-expanded","true");
-      button.querySelector(".open-label").textContent="Hide Plans ↑";
-    }
-  });
-});
-
-    <div class="modal-backdrop" id="signInModal" role="dialog" aria-modal="true">
-  <div class="modal">
-    <button class="close-modal" id="closeModal" type="button">&times;</button>
+    <button class="close-modal" id="closeModal"
+      type="button" aria-label="Close login window">&times;</button>
 
     <div class="kicker">SKY HOST & STUDIO</div>
     <h2 id="authTitle"><span class="gradient-text">Welcome Back!</span></h2>
@@ -560,50 +829,208 @@ groups.forEach(group=>group.classList.remove("active"));
       <div id="usernameField" hidden>
         <label for="authUsername">Username</label>
         <input id="authUsername" name="username" type="text"
-          placeholder="Choose a username" autocomplete="username">
+          placeholder="Enter username or Gmail" autocomplete="username"
+          required>
       </div>
 
-      <label for="authEmail">Username or Gmail</label>
-      <input id="authEmail" name="email" type="text"
-        placeholder="Enter username or Gmail" autocomplete="username" required>
-
       <div id="registerEmailField" hidden>
-        <label for="registerEmail">Gmail address</label>
-        <input id="registerEmail" name="registerEmail" type="email"
-          placeholder="Enter your Gmail address" autocomplete="email">
+        <label for="registerEmail">Gmail</label>
+        <input id="registerEmail" name="email" type="email"
+          placeholder="Enter your Gmail address" autocomplete="email"
+          pattern="[A-Za-z0-9._%+-]+@gmail\.com"
+          title="Please enter a Gmail address ending in @gmail.com">
       </div>
 
       <label for="authPassword">Password</label>
       <input id="authPassword" name="password" type="password"
-        placeholder="Enter your password" autocomplete="current-password" required>
+        placeholder="Enter your password" autocomplete="current-password"
+        minlength="6" required>
 
       <div id="confirmPasswordField" hidden>
         <label for="confirmPassword">Confirm Password</label>
         <input id="confirmPassword" name="confirmPassword" type="password"
-          placeholder="Enter password again" autocomplete="new-password">
+          placeholder="Enter your password again" autocomplete="new-password"
+          minlength="6">
       </div>
 
       <button class="btn btn-primary" id="authSubmit" type="submit">
         Login
       </button>
 
-      <p id="authMessage" role="status"></p>
+      <p id="authMessage" role="status" aria-live="polite"></p>
     </form>
 
-    <p id="switchAuth">
+    <p class="switch-auth" id="switchAuth">
       Don't have an account?
-      <button type="button" id="showRegister"
-        style="background:none;border:0;color:#00e5ff;font-weight:bold">
-        Register
-      </button>
+      <button type="button" id="showRegister">Register</button>
     </p>
 
     <p class="notice">
-      Account creation and login require a connected authentication service.
+      Account creation and login require connected authentication.
+      This demo does not save or authenticate your details.
     </p>
   </div>
 </div>
-              
+
+<script>
+  const modal = document.getElementById("signInModal");
+  const authForm = document.getElementById("authForm");
+  const menuButton = document.getElementById("menuButton");
+  const navMenu = document.getElementById("navMenu");
+
+  const authTitle = document.getElementById("authTitle");
+  const authDescription = document.getElementById("authDescription");
+  const authSubmit = document.getElementById("authSubmit");
+  const switchAuth = document.getElementById("switchAuth");
+  const usernameField = document.getElementById("usernameField");
+  const loginIdentityField = document.getElementById("loginIdentityField");
+  const registerEmailField = document.getElementById("registerEmailField");
+  const confirmPasswordField = document.getElementById("confirmPasswordField");
+
+const authUsername = document.getElementById("authUsername");
+  const authIdentity = document.getElementById("authIdentity");
+  const registerEmail = document.getElementById("registerEmail");
+  const authPassword = document.getElementById("authPassword");
+  const confirmPassword = document.getElementById("confirmPassword");
+  const authMessage = document.getElementById("authMessage");
+
+  let authMode = "login";
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  function closeMenu() {
+    navMenu.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+  }
+
+  menuButton.addEventListener("click", () => {
+    const isOpen = navMenu.classList.toggle("open");
+    menuButton.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  navMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  function openLogin() {
+    closeMenu();
+    modal.classList.add("open");
+    showAuthMode("login");
+                          }
+  document.getElementById("signInButton").addEventListener("click", openLogin);
+
+  document.getElementById("closeModal").addEventListener("click", () => {
+    modal.classList.remove("open");
+  });
+
+  modal.addEventListener("click", event => {
+    if (event.target === modal) {
+      modal.classList.remove("open");
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeMenu();
+      modal.classList.remove("open");
+    }
+  });
+
+  document.querySelectorAll(".category-toggle").forEach(button => {
+    button.addEventListener("click", () => {
+      const list = document.getElementById(
+        button.getAttribute("aria-controls")
+      );
+      const isOpen = list.classList.toggle("open");
+
+      button.setAttribute("aria-expanded", String(isOpen));
+      button.querySelector(".arrow").textContent = isOpen ? "−" : "＋";
+    });
+  });
+
+  function showAuthMode(mode) {
+    authMode = mode;
+    const isRegister = mode === "register";
+
+    authTitle.innerHTML = isRegister
+      ? '<span class="gradient-text">Create Account</span>'
+      : '<span class="gradient-text">Welcome Back!</span>';
+
+    authDescription.textContent = isRegister
+      ? "Register your hosting account."
+      : "Login to your hosting account.";
+
+    authSubmit.textContent = isRegister ? "Register" : "Login";
+
+    usernameField.hidden = !isRegister;
+    loginIdentityField.hidden = isRegister;
+    registerEmailField.hidden = !isRegister;
+    confirmPasswordField.hidden = !isRegister;
+
+    authUsername.required = isRegister;
+    registerEmail.required = isRegister;
+    confirmPassword.required = isRegister;
+    authIdentity.required = !isRegister;
+
+    authPassword.autocomplete = isRegister
+      ? "new-password"
+      : "current-password";
+
+    authUsername.disabled = !isRegister;
+    registerEmail.disabled = !isRegister;
+    confirmPassword.disabled = !isRegister;
+    authIdentity.disabled = isRegister;
+
+  authUsername.value = "";
+    authIdentity.value = "";
+    registerEmail.value = "";
+    authPassword.value = "";
+    confirmPassword.value = "";
+    authMessage.textContent = "";
+
+    if (isRegister) {
+      switchAuth.innerHTML =
+        'Already have an account? <button type="button" id="showLogin">Login</button>';
+    } else {
+      switchAuth.innerHTML =
+        'Don\'t have an account? <button type="button" id="showRegister">Register</button>';
+    }
+
+    const switchButton = document.getElementById(
+      isRegister ? "showLogin" : "showRegister"
+    );
+
+    switchButton.addEventListener("click", () => {
+      showAuthMode(isRegister ? "login" : "register");
+    });
+  }
+
+  authForm.addEventListener("submit", event => {
+    event.preventDefault();
+    authMessage.textContent = "";
+
+    if (authMode === "register") {
+      if (authPassword.value !== confirmPassword.value) {
+        authMessage.textContent = "Passwords do not match.";
+        confirmPassword.focus();
+        return;
+      }
+
+    if (!registerEmail.value.toLowerCase().endsWith("@gmail.com")) {
+        authMessage.textContent = "Please enter a Gmail address ending in @gmail.com.";
+        registerEmail.focus();
+        return;
+      }
+
+      authMessage.textContent =
+        "Registration is not connected yet. No account has been created.";
+    } else {
+      authMessage.textContent =
+        "Login is not connected yet. No account has been accessed.";
+    }
+  });
+
+  showAuthMode("login");
 </script>
 
 </body>
